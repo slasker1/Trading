@@ -35,7 +35,7 @@ Q4_ANS = doc['Q4_ANS']
 def auth():
     # Open a new browser
     s = Service(r'C:/Users/samla/OneDrive/Documents/GitHub/slasker1/chromedriver.exe')
-    driver = webdriver.Chrome(service=s)#, options=chrome_options)
+    driver = webdriver.Chrome(service=s, options=chrome_options)
     # Define the components of request
     method = 'GET'
     url = 'https://auth.tdameritrade.com/auth?'
