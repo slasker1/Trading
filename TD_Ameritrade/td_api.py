@@ -239,4 +239,4 @@ def get_account_info(access_token):
 
     return my_positions, cash_available_to_trade, total_equity
 
-get_account_info(auth())
+#get_account_info(auth())
