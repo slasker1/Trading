@@ -10,6 +10,7 @@ with open('C:/Users/samla/OneDrive/Documents/GitHub/slasker1/td_api_yml.yml', 'r
 
 for word, val in doc.items():
     doc[word] = re.sub("[']+", "", str(val))
+    doc[word] = re.sub("[8]+", "", str(val))
 
 
 chrome_options = Options()
@@ -35,7 +36,7 @@ Q4_ANS = doc['Q4_ANS']
 def auth():
     # Open a new browser
     s = Service(r'C:/Users/samla/OneDrive/Documents/GitHub/slasker1/chromedriver.exe')
-    driver = webdriver.Chrome(service=s, options=chrome_options)
+    driver = webdriver.Chrome(service=s)#, options=chrome_options)
     # Define the components of request
     method = 'GET'
     url = 'https://auth.tdameritrade.com/auth?'
@@ -57,6 +58,11 @@ def auth():
     driver.find_element(By.NAME,"init_secretquestion").click()
     # Answer the Security Questions.
     secret_question = driver.find_elements(By.XPATH, '//*[@id="authform"]/main/div[2]/p[2]')[0].text
+    print(secret_question)
+    print(Q1)
+    print(Q2)
+    print(Q3)
+    print(Q4)
     if secret_question == Q1:
         driver.find_element(By.ID,'secretquestion0').send_keys(Q1_ANS)
     elif secret_question == Q2:
@@ -65,6 +71,8 @@ def auth():
         driver.find_element(By.ID,'secretquestion0').send_keys(Q3_ANS)
     elif secret_question == Q4:
         driver.find_element(By.ID,'secretquestion0').send_keys(Q4_ANS)
+    else:
+        print('issue')
     # Submit results
     driver.find_element(By.ID,'accept').click()
     # Sleep and click Accept Terms.
@@ -236,4 +244,4 @@ def get_account_info(access_token):
 
     return my_positions, cash_available_to_trade, total_equity
 
-get_account_info(auth())
+#get_account_info(auth())
