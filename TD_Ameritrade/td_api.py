@@ -10,8 +10,8 @@ with open('C:/Users/samla/OneDrive/Documents/GitHub/slasker1/td_api_yml.yml', 'r
 
 for word, val in doc.items():
     doc[word] = re.sub("[']+", "", str(val))
-    doc[word] = re.sub("[8]+", "", str(val))
-
+for word, val in doc.items():
+    doc[word] = re.sub("[8]+", "'", str(val))
 
 chrome_options = Options()
 chrome_options.add_argument("--headless")
@@ -32,16 +32,17 @@ Q3 = doc['Q3']
 Q3_ANS = doc['Q3_ANS']
 Q4 = doc['Q4']
 Q4_ANS = doc['Q4_ANS']
+
 # Define path to Web Driver
 def auth():
     # Open a new browser
     s = Service(r'C:/Users/samla/OneDrive/Documents/GitHub/slasker1/chromedriver.exe')
-    driver = webdriver.Chrome(service=s)#, options=chrome_options)
+    driver = webdriver.Chrome(service=s, options=chrome_options)
     # Define the components of request
     method = 'GET'
     url = 'https://auth.tdameritrade.com/auth?'
     # Define Payload, MAKE SURE TO HAVE THE CORRECT REDIRECT URI
-    payload_auth = {'response_type': 'code', 'redirect_uri': 'http://localhost', 'client_id': client_code}
+    payload_auth = {'response_type': 'code', 'redirect_uri': 'https://localhost', 'client_id': client_code}
     built_url = requests.Request(method, url, params=payload_auth).prepare()
     # Go to the URL
     my_url = built_url.url
@@ -59,10 +60,7 @@ def auth():
     # Answer the Security Questions.
     secret_question = driver.find_elements(By.XPATH, '//*[@id="authform"]/main/div[2]/p[2]')[0].text
     print(secret_question)
-    print(Q1)
-    print(Q2)
-    print(Q3)
-    print(Q4)
+
     if secret_question == Q1:
         driver.find_element(By.ID,'secretquestion0').send_keys(Q1_ANS)
     elif secret_question == Q2:
