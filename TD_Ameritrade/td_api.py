@@ -57,7 +57,6 @@ def auth():
     driver.find_element(By.NAME,"init_secretquestion").click()
     # Answer the Security Questions.
     secret_question = driver.find_elements(By.XPATH, '//*[@id="authform"]/main/div[2]/p[2]')[0].text
-    print(secret_question)
     if secret_question == Q1:
         driver.find_element(By.ID,'secretquestion0').send_keys(Q1_ANS)
     elif secret_question == Q2:
@@ -71,8 +70,8 @@ def auth():
     # Sleep and click Accept Terms.
     time.sleep(1)
 
-    #I do trust the device option button
-    option = driver.find_elements(By.CLASS_NAME,"radio")[0]
+    #I do NOT trust the device option button
+    option = driver.find_elements(By.CLASS_NAME,"radio")[1]
     option.click()
 
     #Trust device Save button
@@ -84,11 +83,9 @@ def auth():
     time.sleep(1)
 
     new_url = driver.current_url
-    #print(new_url)
     parse_url = urllib.parse.unquote(new_url.split('code=')[1])
 
     driver.close()
-    #print(parse_url)
     endpoint_url = r"https://api.tdameritrade.com/v1/oauth2/token"
 
     headers = {'Content-Type':"application/x-www-form-urlencoded"}
@@ -239,4 +236,4 @@ def get_account_info(access_token):
 
     return my_positions, cash_available_to_trade, total_equity
 
-#get_account_info(auth())
+get_account_info(auth())
