@@ -11,10 +11,10 @@ with open('C:/Users/samla/OneDrive/Documents/GitHub/slasker1/td_api_yml.yml', 'r
 for word, val in doc.items():
     doc[word] = re.sub("[']+", "", str(val))
 for word, val in doc.items():
-    doc[word] = re.sub("[8]+", "'", str(val))
+    doc[word] = re.sub("<rep>", "'", str(val))
 
 chrome_options = Options()
-chrome_options.add_argument("--headless")
+#chrome_options.add_argument("--headless")
 
 pd.set_option('display.max_columns', None)
 
@@ -42,7 +42,7 @@ def auth():
     method = 'GET'
     url = 'https://auth.tdameritrade.com/auth?'
     # Define Payload, MAKE SURE TO HAVE THE CORRECT REDIRECT URI
-    payload_auth = {'response_type': 'code', 'redirect_uri': 'https://localhost', 'client_id': client_code}
+    payload_auth = {'response_type': 'code', 'redirect_uri': 'http://localhost', 'client_id': client_code}
     built_url = requests.Request(method, url, params=payload_auth).prepare()
     # Go to the URL
     my_url = built_url.url
@@ -59,7 +59,6 @@ def auth():
     driver.find_element(By.NAME,"init_secretquestion").click()
     # Answer the Security Questions.
     secret_question = driver.find_elements(By.XPATH, '//*[@id="authform"]/main/div[2]/p[2]')[0].text
-    print(secret_question)
 
     if secret_question == Q1:
         driver.find_element(By.ID,'secretquestion0').send_keys(Q1_ANS)
@@ -69,8 +68,6 @@ def auth():
         driver.find_element(By.ID,'secretquestion0').send_keys(Q3_ANS)
     elif secret_question == Q4:
         driver.find_element(By.ID,'secretquestion0').send_keys(Q4_ANS)
-    else:
-        print('issue')
     # Submit results
     driver.find_element(By.ID,'accept').click()
     # Sleep and click Accept Terms.
