@@ -2,7 +2,7 @@ import numpy as np, time, pandas as pd, yaml
 from scipy import stats
 from build_quandl_universe import get_volume_closeadj
 
-break_str = '#' * 100
+break_str = '-' * 100
 
 with open('C:/Users/samla/OneDrive/Documents/GitHub/slasker1/eq_momentum.yml', 'r') as f:
     doc = yaml.safe_load(f)
