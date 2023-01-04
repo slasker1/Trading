@@ -16,5 +16,5 @@ class Initialize:
                                  threads=True, proxy=None)
        ticker_hist['Daily_TWAP'] = (ticker_hist['Open'] + ticker_hist['High'] + ticker_hist['Low'] + ticker_hist[
            'Close']) / 4
-       TWAP = ticker_hist.head(int(self.time))['Daily_TWAP'].mean()
+       TWAP = ticker_hist.tail(int(self.time))['Daily_TWAP'].mean()
        return TWAP
