@@ -14,7 +14,7 @@ for word, val in doc.items():
     doc[word] = re.sub("<rep>", "'", str(val))
 
 chrome_options = Options()
-#chrome_options.add_argument("--headless")
+chrome_options.add_argument("--headless")
 
 pd.set_option('display.max_columns', None)
 
