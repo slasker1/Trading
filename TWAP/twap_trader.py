@@ -1,6 +1,6 @@
 from twap_obj import Initialize
 
-break_str = '#' * 100
+break_str = '-' * 100
 
 if __name__ == '__main__':
     print(break_str)
