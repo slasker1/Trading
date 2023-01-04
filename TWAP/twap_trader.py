@@ -13,5 +13,5 @@ if __name__ == '__main__':
     print('\n' + break_str + '\nDisplaying your selection: ')
     Initialize.displaySelection(selection)
 
-    print('The TWAP of ' + selection.ticker + ' for the ' + selection.time + ' past trading days = '
+    print('The TWAP of ' + selection.ticker + ' for the past ' + selection.time + ' trading days = '
           + str(selection.twap))
