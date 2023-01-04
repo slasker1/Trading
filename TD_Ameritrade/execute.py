@@ -4,7 +4,7 @@ from moving_avg import trend_filter
 from td_api import trade, get_price, auth, get_account_info
 pd.set_option('mode.chained_assignment', None)
 
-break_str = '#' * 100
+break_str = '-' * 100
 
 def target_weight(iterable):
     #print(iterable)
