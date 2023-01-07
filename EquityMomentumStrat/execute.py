@@ -1,6 +1,10 @@
 import concurrent.futures, time, pandas as pd, math
 from equity_momentum_strat import build_mom_list
 from moving_avg import trend_filter
+
+import sys
+sys.path.insert(0, 'https://github.com/slasker1/Trading/tree/main/TD_Ameritrade/')
+
 from td_api import trade, get_price, auth, get_account_info
 pd.set_option('mode.chained_assignment', None)
 
