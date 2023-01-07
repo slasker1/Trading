@@ -1,13 +1,11 @@
-import concurrent.futures, time, pandas as pd, math
+import concurrent.futures, time, pandas as pd, math, sys
 from equity_momentum_strat import build_mom_list
 from moving_avg import trend_filter
 
-import sys
-sys.path.insert(0, 'https://github.com/slasker1/Trading/tree/main/TD_Ameritrade/')
+sys.path.append('../TD_Ameritrade')
+from TD_Ameritrade.td_api import trade, get_price, auth, get_account_info
 
-from td_api import trade, get_price, auth, get_account_info
 pd.set_option('mode.chained_assignment', None)
-
 break_str = '-' * 100
 
 def target_weight(iterable):
