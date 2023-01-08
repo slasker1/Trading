@@ -1,4 +1,11 @@
 # Trading
 Live trading engines and trading related models
+
 ## TD Ameritrade
-* [TD_API.PY](https://github.com/slasker1/Trading/blob/main/TD_Ameritrade/td_api.py): API connectivity to TD Ameritrade for auto-order execution
+* [TD_API](https://github.com/slasker1/Trading/blob/main/TD_Ameritrade): API connectivity to TD Ameritrade for auto-order execution
+
+## Equity Momentum Quant Strategy
+* [Equity Momentum](https://github.com/slasker1/Trading/tree/main/EquityMomentumStrat): quantitative strategy for equities focusing on price momentum (exponential regression)
+
+## TWAP
+* [TWAP](https://github.com/slasker1/Trading/tree/main/TWAP): object-oreinted approach to provide real-time TWAP on any ticker available through the yfinance API
