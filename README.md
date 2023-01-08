@@ -2,7 +2,7 @@
 Live trading engines and trading related models
 
 ### TD Ameritrade
-* [TD_API](https://github.com/slasker1/Trading/blob/main/TD_Ameritrade): API connectivity to TD Ameritrade for auto-order execution
+* [TD API](https://github.com/slasker1/Trading/blob/main/TD_Ameritrade): API connectivity to TD Ameritrade for auto-order execution
 
 ### Equity Momentum Quant Strategy
 * [Equity Momentum](https://github.com/slasker1/Trading/tree/main/EquityMomentumStrat): quantitative strategy for equities focusing on price momentum (exponential regression)
